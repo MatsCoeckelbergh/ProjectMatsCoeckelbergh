@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="ProjectMatsC:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>ProjectMatsC</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="ContactTracingApp-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="ProjectMatsC:war exploded" />
+    </root>
+  </artifact>
+</component>
