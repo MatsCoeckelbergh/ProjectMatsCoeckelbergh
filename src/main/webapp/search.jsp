@@ -21,19 +21,24 @@
                     <p>
                         <label for="searchforSubmit">Search for:</label>
                         <input type="text" id="searchfor" name="searchfor" value="" required>
+                        <label for="searchforSubmit">From:</label>
+                        <input type="date" id="startdate" name="startdate" value="" required>
+                        <label for="searchforSubmit">Until:</label>
+                        <input type="date" id="enddate" name="enddate" value="" required>
                     </p>
                     <p>
                         <input type="submit" id="searchforSubmit" value="Search">
                     </p>
                 </form>
-                <h2>These are the people you met since your last test:</h2>
+                <h2>Contacts:</h2>
                 <c:choose>
                     <c:when test="${contacts.size() <= 0}">
-                        <p id="error">You don't need to contact anyone. You haven't seen anyone since your last positive test.</p>
+                        <p id="error">No contacts to show.</p>
                     </c:when>
                     <c:otherwise>
                         <table>
                             <tr>
+                                <th>ID</th>
                                 <th>Date</th>
                                 <th>Hour</th>
                                 <th>First Name</th>
@@ -43,6 +48,9 @@
                             </tr>
                             <c:forEach var="contact" items="${contacts}">
                                 <tr>
+                                    <td>
+                                        <c:out value="${contact.getUserID()}"/>
+                                    </td>
                                     <td>
                                         <c:out value="${contact.getDate()}"/>
                                     </td>
@@ -56,7 +64,7 @@
                                         <c:out value="${contact.getlName()}"/>
                                     </td>
                                     <td>
-                                        <c:out value="${contact.getPhoneName()}"/>
+                                        <c:out value="${contact.getPhoneNumber()}"/>
                                     </td>
                                     <td>
                                         <c:out value="${contact.getEmail()}"/>
