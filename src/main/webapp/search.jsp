@@ -43,12 +43,24 @@
                             </tr>
                             <c:forEach var="contact" items="${contacts}">
                                 <tr>
-                                    <td>${contact.getDate()}</td>
-                                    <td>${contact.getHour()}</td>
-                                    <td>${contact.getfName()}</td>
-                                    <td>${contact.getlName()}</td>
-                                    <td>${contact.getPhoneNumber()}</td>
-                                    <td>${contact.getEmail()}</td>
+                                    <td>
+                                        <c:out value="${contact.getDate()}"/>
+                                    </td>
+                                    <td>
+                                        <c:out value="${contact.getHour()}"/>
+                                    </td>
+                                    <td>
+                                        <c:out value="${contact.getfName()}"/>
+                                    </td>
+                                    <td>
+                                        <c:out value="${contact.getlName()}"/>
+                                    </td>
+                                    <td>
+                                        <c:out value="${contact.getPhoneName()}"/>
+                                    </td>
+                                    <td>
+                                        <c:out value="${contact.getEmail()}"/>
+                                    </td>
                                 </tr>
                             </c:forEach>
                         </table>

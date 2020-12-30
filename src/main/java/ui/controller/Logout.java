@@ -9,6 +9,7 @@ public class Logout extends RequestHandler {
     public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
         //invalidate makes sure the session becomes unusable
         request.getSession().invalidate();
+        request.setAttribute("confirmation", "Je bent uitgelogd!");
         return "Controller?command=Home";
     }
 }

@@ -7,6 +7,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>Home</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <script>
+        function clientValidateUserID(){
+            if (document.getElementById("userId").value === ""){
+                document.getElementById("userId").className += "red-border ";
+            }
+            else{
+                document.getElementById("userId").className = "";
+            }
+        }
+
+        function clientValidatePassword(){
+            if (document.getElementById("password").value === ""){
+                document.getElementById("password").className += "red-border ";
+            }
+            else{
+                document.getElementById("password").className = "";
+            }
+        }
+    </script>
 </head>
 <body>
 <div id="container">
@@ -18,6 +38,11 @@
         <main>
             <c:choose>
                 <c:when test="${not empty user}">
+                    <c:if test="${not empty confirmation}">
+                        <div class="alert-confirm">
+                                ${confirmation}
+                        </div>
+                    </c:if>
                     <p>Welcome, ${user.firstName}!</p>
                     <form action="Controller?command=Logout" method="POST">
                         <p>
@@ -31,10 +56,16 @@
                                 ${error}
                         </div>
                     </c:if>
+                    <c:if test="${not empty confirmation}">
+                        <div class="alert-confirm">
+                                ${confirmation}
+                        </div>
+                    </c:if>
+
                     <form action="Controller?command=Login" method="POST">
                         <p>
                             <label for="userId">Your user id:</label>
-                            <input type="text" id="userId" name="userId" value="${userIdPrevious}" required>
+                            <input type="text" id="userId" name="userId" value="${userIdPrevious}" onblur="clientValidateUserID()" required>
                         </p>
                         <p>
                             <label for="password">Your password:    </label>

@@ -7,6 +7,11 @@
 }
 
 /* Form */
+
+.red-border{
+    border: 1px solid red;
+}
+
 th, td {
     padding: 0.6em 1.2em 0 0;
     text-align: left;
@@ -17,6 +22,16 @@ table caption {
     display: none;
 }
 
+.alert-confirm {
+    padding: 0.5em;
+    background-color: #BBFFBB;
+    border: 1px solid forestgreen;
+    color: forestgreen;
+    border-radius: 3px;
+    width: 100%;
+    margin-bottom: 1em;
+    box-sizing: border-box;
+}
 .alert-danger {
     padding: 0.5em;
     background-color: #f2dede;

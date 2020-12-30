@@ -29,6 +29,9 @@ public class Login extends RequestHandler {
             request.setAttribute("error", e.getMessage());
         }
 
+        if (request.getAttribute("error") == "" || request.getAttribute("error") == null){
+            request.setAttribute("confirmation", "Je bent ingelogd!");
+        }
         return "/Controller?command=Home";
     }
 }

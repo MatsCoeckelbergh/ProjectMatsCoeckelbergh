@@ -15,6 +15,12 @@
             <jsp:param name="page" value="Register"></jsp:param>
         </jsp:include>
 
+        <c:if test="${not empty confirmation}">
+            <div class="alert-confirm">
+                    ${confirmation}
+            </div>
+        </c:if>
+
         <main>
             <c:if test="${not empty errors}">
                 <div class="alert-danger">

@@ -42,13 +42,14 @@ public class Add extends RequestHandler {
         if (errors.size() == 0) {
             try {
                 personService.add(person);
-                return "Controller?command=Overview";
+                request.setAttribute("confirmation", "Je bent geregistreerd!");
+                return "Controller?command=Home";
             } catch (DbException e) {
                 errors.add(e.getMessage());
             }
         }
         request.setAttribute("errors", errors);
-        return "Controller?command=Register";
+        return "/Controller?command=Register";
     }
 
     private void setPersonEmail(Person person, HttpServletRequest request, List<String> errors) {
@@ -105,7 +106,7 @@ public class Add extends RequestHandler {
 
     private void setPersonRole(Person person, HttpServletRequest request, List<String> errors) {
         try {
-            if (request.getParameter("password").equals("M4k3m34dm1n")) {
+            if (request.getParameter("password").equals("1234TT")) {
                 person.setRole("admin");
             } else {
                 person.setRole("user");

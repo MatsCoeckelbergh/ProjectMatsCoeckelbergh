@@ -31,10 +31,18 @@
                         </tr>
                         <c:forEach var="person" items="${people}">
                             <tr>
-                                <td>${person.getEmail()}</td>
-                                <td>${person.getUserid()}</td>
-                                <td>${person.getFirstName()}</td>
-                                <td>${person.getLastName()}</td>
+                                <td>
+                                    <c:out value="${person.getEmail()}"/>
+                                </td>
+                                <td>
+                                    <c:out value="${person.getUserid()}"/>
+                                </td>
+                                <td>
+                                    <c:out value="${person.getFirstName()}"/>
+                                </td>
+                                <td>
+                                    <c:out value="${person.getLastName()}"/>
+                                </td>
                             </tr>
                         </c:forEach>
                     </table>
@@ -50,11 +58,18 @@
                         </tr>
                         <c:forEach var="person" items="${positives}">
                             <tr>
-                                <td>${person.getEmail()}</td>
-                                <td>${person.getUserid()}</td>
-                                <td>${person.getFirstName()}</td>
-                                <td>${person.getLastName()}</td>
-                                <td>${person.getTestTime()}</td>
+                                <td>
+                                    <c:out value="${person.getEmail()}"/>
+                                </td>
+                                <td>
+                                    <c:out value="${person.getUserid()}"/>
+                                </td>
+                                <td>
+                                    <c:out value="${person.getFirstName()}"/>
+                                </td>
+                                <td>
+                                    <c:out value="${person.getLastName()}"/>
+                                </td>
                             </tr>
                         </c:forEach>
                     </table>
