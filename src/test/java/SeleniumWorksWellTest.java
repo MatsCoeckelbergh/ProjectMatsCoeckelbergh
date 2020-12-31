@@ -9,15 +9,15 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class SeleniumWorksWellTest {
+	private WebDriver driver;
+	private String path = "http://localhost:8080/Controller";
 
-		private WebDriver driver;
-
-		@Before
-		public void setUp() throws Exception {
-			System.setProperty("webdriver.chrome.driver", "C:\\Users\\user\\Desktop\\Software\\chromedriver.exe");
-			driver = new ChromeDriver();
-			driver.get("https://nl.wikipedia.org/wiki/Hoofdpagina");
-		}
+	@Before
+	public void setUp() {
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Mats\\Desktop\\Software\\chromedriver.exe");
+		driver = new ChromeDriver();
+		driver.get(path+"?command=Register");
+	}
 
 
 		@After

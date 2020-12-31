@@ -17,7 +17,7 @@ public class RegisterTest {
 	
 	@Before
 	public void setUp() {
-		System.setProperty("webdriver.chrome.driver", "C:\\Users\\user\\Desktop\\Software\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Mats\\Desktop\\Software\\chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.get(path+"?command=Register");
 	}
@@ -33,7 +33,7 @@ public class RegisterTest {
 		submitForm(useridRandom, "Jan", "Janssens", "jan.janssens@hotmail.com" , "1234A");
 		
 		String title = driver.getTitle();
-		assertEquals("Overview",title);
+		assertEquals("Home",title);
 		
 		driver.get(path+"?command=Overview");
 		

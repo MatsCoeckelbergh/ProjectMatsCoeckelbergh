@@ -17,9 +17,9 @@ public class SearchTest {
 
     @Before
     public void setUp() {
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\user\\Desktop\\Software\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\Mats\\Desktop\\Software\\chromedriver.exe");
         driver = new ChromeDriver();
-        driver.get(path+"?command=Home");
+        driver.get(path+"?command=Register");
     }
 
     @After
