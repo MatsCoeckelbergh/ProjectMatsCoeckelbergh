@@ -7,6 +7,50 @@
     <meta charset="UTF-8">
     <title>Add Contact</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script>
+        function clientValidateByID(id){
+            if (document.getElementById(id).value === ""){
+                document.getElementById(id).className += "red-border ";
+            }
+            else{
+                document.getElementById(id).className = "";
+            }
+        }
+
+
+        function clientValidateFirstName(){
+            clientValidateByID("fName");
+        }
+
+        function clientValidateLastName(){
+            clientValidateByID("lName");
+        }
+
+        function clientValidateHour(){
+            clientValidateByID("hour")
+        }
+
+        function clientValidateDate(){
+            clientValidateByID("date")
+        }
+
+        function clientValidatePhoneNumber(){
+            clientValidateByID("phoneNumber")
+        }
+
+        function clientValidateEmail(){
+            var emailstr = document.getElementById("email").value;
+            if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(emailstr))
+            {
+                document.getElementById("email").className = "";
+            }
+            else
+            {
+                document.getElementById("email").className += "red-border "
+            }
+        }
+
+    </script>
 </head>
 <body>
 <div id="container">
@@ -74,27 +118,27 @@
             <form method="POST" action="Controller?command=AddContact" novalidate="novalidate">
                 <p>
                     <label for="fName">First Name:</label>
-                    <input type="text" id="fName" name="fName" value="${fNamePrevious}" required>
+                    <input type="text" id="fName" name="fName" value="${fNamePrevious}" onblur="clientValidateFirstName()" required>
                 </p>
                 <p>
                     <label for="lName">Last Name:</label>
-                    <input type="text" id="lName" name="lName" value="${lNamePrevious}" required>
+                    <input type="text" id="lName" name="lName" value="${lNamePrevious}" onblur="clientValidateLastName()" required>
                 </p>
                 <p>
                     <label for="date">Date:</label>
-                    <input type="date" id="date" name="date" value="${datePrevious}" required>
+                    <input type="date" id="date" name="date" value="${datePrevious}" onblur="clientValidateDate()" required>
                 </p>
                 <p>
                     <label for="hour">Hour:</label>
-                    <input type="time" id="hour" name="hour" value="${hourPrevious}" required>
+                    <input type="time" id="hour" name="hour" value="${hourPrevious}" onblur="clientValidateHour()" required>
                 </p>
                 <p>
                     <label for="phoneNumber">GSM-nummer:</label>
-                    <input type="text" id="phoneNumber" name="phoneNumber" value="${phoneNumberPrevious}" required>
+                    <input type="text" id="phoneNumber" name="phoneNumber" value="${phoneNumberPrevious}" onblur="clientValidatePhoneNumber()" required>
                 </p>
                 <p>
                     <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" value="${emailPrevious}" required>
+                    <input type="email" id="email" name="email" value="${emailPrevious}" onblur="clientValidateEmail()" required>
                 </p>
                 <p>
                     <input type="submit" id="addContact" value="Add contact">

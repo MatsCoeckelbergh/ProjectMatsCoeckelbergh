@@ -7,10 +7,11 @@
             <li ${param.page eq 'Home'?'id="current"':""}>
                 <a href="Controller?command=Home">Home</a>
             </li>
-
-            <li ${param.page eq 'Register'?'id="current"':""}>
-                <a href="Controller?command=Register">Register</a>
-            </li>
+            <c:if test="${empty user}">
+                <li ${param.page eq 'Register'?'id="current"':""}>
+                    <a href="Controller?command=Register">Register</a>
+                </li>
+            </c:if>
             <c:if test="${not empty user}">
                 <c:if test="${user.role=='admin'}">
                     <li ${param.page eq 'Overview'?'id="current"':""}>

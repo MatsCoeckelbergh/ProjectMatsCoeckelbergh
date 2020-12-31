@@ -93,9 +93,7 @@ public class PersonService {
             db.registerTestResult(userID, localDateTime);
             return;
         }
-        if (localDateTime.isAfter(getLastPositiveTestDay(userID))) {
-            db.registerTestResult(userID, localDateTime);
-        }
+        db.registerTestResult(userID, localDateTime);
     }
 
     public LocalDateTime getLastPositiveTestDay(String userID){
