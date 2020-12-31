@@ -70,6 +70,9 @@
                                 <td>
                                     <c:out value="${person.getLastName()}"/>
                                 </td>
+                                <td>
+                                    <c:out value="${person.getTestTime()}"/>
+                                </td>
                             </tr>
                         </c:forEach>
                     </table>

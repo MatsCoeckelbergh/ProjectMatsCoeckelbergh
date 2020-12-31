@@ -30,8 +30,15 @@ public class Login extends RequestHandler {
         }
 
         if (request.getAttribute("error") == "" || request.getAttribute("error") == null){
-            request.setAttribute("confirmation", "Je bent ingelogd!");
+            HttpSession ses = request.getSession();
+            ses.setAttribute("confirmation","Je bent ingelogd!");
+            try {
+                response.sendRedirect("Controller?command=Home");
+            }catch (Exception e){
+                e.printStackTrace();
+            }
         }
+
         return "/Controller?command=Home";
     }
 }

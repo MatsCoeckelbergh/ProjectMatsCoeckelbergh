@@ -18,6 +18,11 @@
 
 
         <main>
+            <c:if test="${not empty confirmation}">
+                <div class="alert-confirm">
+                        ${confirmation}
+                </div>
+            </c:if>
             <div style="overflow-x: scroll">
                 <c:choose>
                     <c:when test="${people.size() <= 0}">

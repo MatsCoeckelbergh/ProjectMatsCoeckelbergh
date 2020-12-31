@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet("/Controller")
@@ -37,6 +38,12 @@ public class Controller extends HttpServlet {
                 destination = "error.jsp";
             }
         }
-        request.getRequestDispatcher(destination).forward(request, response);
+        if (!response.isCommitted()){
+            HttpSession ses = request.getSession();
+            request.setAttribute("confirmation", ses.getAttribute("confirmation"));
+            ses.removeAttribute("confirmation");
+            request.getRequestDispatcher(destination).forward(request, response);
+        }
+
     }
 }

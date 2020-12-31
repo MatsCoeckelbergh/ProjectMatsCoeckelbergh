@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 
 public class RegisterPositive extends RequestHandler {
@@ -27,15 +28,27 @@ public class RegisterPositive extends RequestHandler {
             personService.registerPositiveTest(person.getUserid(), time);
         }catch (Exception e)
         {
+            if (e instanceof  DateTimeParseException){
+                errors.add("Please select a date");
+            }
+            else
+            {
+                errors.add("You're not logged in. Please log in/register first.");
+            }
             e.printStackTrace();
-            errors.add("You're not logged in. Please log in/register first.");
-        }
 
+        }
 
         if (errors.size() == 0) {
             try {
                 personService.add(person);
-                request.setAttribute("confirmation", "You've registered your test!");
+                HttpSession ses = request.getSession();
+                ses.setAttribute("confirmation","Je hebt je test geregistreerd!");
+                try {
+                    response.sendRedirect("Controller?command=Contacts");
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
                 return "Controller?command=Contacts";
             } catch (DbException e) {
                 errors.add(e.getMessage());

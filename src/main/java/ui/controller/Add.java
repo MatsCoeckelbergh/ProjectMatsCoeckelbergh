@@ -5,6 +5,7 @@ import domain.model.Person;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,8 +43,13 @@ public class Add extends RequestHandler {
         if (errors.size() == 0) {
             try {
                 personService.add(person);
-                request.setAttribute("confirmation", "Je bent geregistreerd!");
-                return "Controller?command=Home";
+                HttpSession ses = request.getSession();
+                ses.setAttribute("confirmation","Je bent geregistreerd!");
+                try {
+                    response.sendRedirect("Controller?command=Home");
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
             } catch (DbException e) {
                 errors.add(e.getMessage());
             }

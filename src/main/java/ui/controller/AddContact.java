@@ -6,6 +6,7 @@ import domain.model.Person;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +30,13 @@ public class AddContact extends RequestHandler {
             try {
                 contactService.add(contact);
                 clearPreviousValues(request);
+                HttpSession ses = request.getSession();
+                ses.setAttribute("confirmation","Je hebt een contact toegevoegd!");
+                try {
+                    response.sendRedirect("Controller?command=Contacts");
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
             } catch (DbException e) {
                 e.printStackTrace();
                 errors.add(e.getMessage());
@@ -91,7 +99,7 @@ public class AddContact extends RequestHandler {
         {
             contact.setTime(LocalDateTime.parse(date+"T"+hour));
         } catch (Exception e) {
-            errors.add(e.getMessage());
+            errors.add("No time given.");
         }
     }
 
