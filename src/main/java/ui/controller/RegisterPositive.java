@@ -35,12 +35,14 @@ public class RegisterPositive extends RequestHandler {
         if (errors.size() == 0) {
             try {
                 personService.add(person);
+                request.setAttribute("confirmation", "You've registered your test!");
                 return "Controller?command=Contacts";
             } catch (DbException e) {
                 errors.add(e.getMessage());
             }
         }
         request.setAttribute("errors", errors);
+
         return "Controller?command=RegisterPositivePage";
     }
 }

@@ -69,7 +69,7 @@
                         </p>
                         <p>
                             <label for="password">Your password:    </label>
-                            <input type="password" id="password" name="password" required>
+                            <input type="password" id="password" name="password" onblur="clientValidatePassword()" required>
                         </p>
                         <p>
                             <input type="submit" id="logIn" value="Log in">
